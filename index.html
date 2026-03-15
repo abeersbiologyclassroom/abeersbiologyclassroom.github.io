@@ -1,0 +1,734 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Abeer's Biology Classroom</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Serif+Bengali:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", '"Noto Serif Bengali"', "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/mhchem.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+    ></script>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body class="min-h-screen bg-slate-50 font-sans text-slate-800">
+    <header class="bg-cyan-600 text-white shadow-md sticky top-0 z-50">
+      <div
+        class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between"
+      >
+        <div class="flex items-center gap-2">
+          <h1 class="text-xl font-bold tracking-tight">
+            Abeer's Biology Classroom
+          </h1>
+        </div>
+        <div
+          id="timer-container"
+          class="hidden flex items-center gap-2 px-3 py-1.5 rounded-full font-mono font-bold text-lg bg-cyan-800 transition-colors"
+        >
+          <i data-lucide="clock" class="w-4 h-4"></i>
+          <span id="timer-display">00:00</span>
+        </div>
+      </div>
+      <div class="h-1 w-full bg-cyan-800">
+        <div
+          id="progress-bar"
+          class="h-full bg-cyan-300 transition-all duration-300"
+          style="width: 0%"
+        ></div>
+      </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 py-8">
+      <div
+        id="landing-view"
+        class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 md:p-12 text-center max-w-2xl mx-auto mt-10"
+      >
+        <div
+          class="inline-flex items-center justify-center w-20 h-20 bg-cyan-100 text-cyan-600 rounded-full mb-6"
+        >
+          <i data-lucide="file-text" class="w-10 h-10"></i>
+        </div>
+        <h2 id="landing-title" class="text-3xl font-bold text-slate-800 mb-4">
+          Loading Title...
+        </h2>
+
+        <div
+          id="landing-stats"
+          class="hidden flex-wrap justify-center gap-6 my-8"
+        >
+          <div
+            class="flex items-center gap-2 text-slate-600 bg-slate-50 px-4 py-2 rounded-lg border border-slate-100"
+          >
+            <i data-lucide="help-circle" class="w-5 h-5 text-cyan-500"></i>
+            <span id="landing-q-count" class="font-medium">0 Questions</span>
+          </div>
+          <div
+            class="flex items-center gap-2 text-slate-600 bg-slate-50 px-4 py-2 rounded-lg border border-slate-100"
+          >
+            <i data-lucide="clock" class="w-5 h-5 text-cyan-500"></i>
+            <span id="landing-time" class="font-medium">0 Minutes</span>
+          </div>
+          <div
+            class="flex items-center gap-2 text-slate-600 bg-slate-50 px-4 py-2 rounded-lg border border-slate-100"
+          >
+            <i data-lucide="bar-chart-2" class="w-5 h-5 text-cyan-500"></i>
+            <span class="font-medium">+1 Correct / -0.25 Incorrect</span>
+          </div>
+        </div>
+
+        <div
+          class="bg-amber-50 border border-amber-200 text-amber-800 p-4 rounded-lg text-left mb-8 text-sm"
+        >
+          <h4 class="font-bold flex items-center gap-2 mb-2">
+            <i data-lucide="alert-circle" class="w-4 h-4"></i> Instructions:
+          </h4>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>Read each question carefully.</li>
+            <li>
+              Once you select an option, it is <strong>locked</strong> and
+              cannot be changed.
+            </li>
+            <li>The test will auto-submit when the timer reaches zero.</li>
+            <li>
+              If you accidentally refresh the page, your progress will be
+              restored.
+            </li>
+          </ul>
+        </div>
+
+        <button
+          id="start-btn"
+          onclick="startTest()"
+          class="hidden bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-3 px-8 rounded-full shadow-md hover:shadow-lg transition-all flex items-center gap-2 mx-auto text-lg"
+        >
+          <i data-lucide="play" class="w-5 h-5"></i> Start Test Now
+        </button>
+      </div>
+
+      <div id="testing-view" class="hidden pb-20">
+        <div
+          class="mb-6 flex justify-between items-center bg-white p-4 rounded-xl shadow-sm border border-slate-200"
+        >
+          <h2 id="testing-title" class="text-lg font-bold text-slate-700">
+            Exam Title
+          </h2>
+          <div class="text-sm font-medium text-slate-500">
+            Progress:
+            <span id="progress-count" class="text-cyan-600 font-bold">0</span>
+            / <span id="total-count">0</span>
+          </div>
+        </div>
+
+        <div id="questions-container" class="space-y-6"></div>
+
+        <div
+          class="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 p-4 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] z-40"
+        >
+          <div class="max-w-4xl mx-auto flex justify-between items-center">
+            <div class="text-slate-500 font-medium hidden sm:block">
+              Make sure you have reviewed all answered questions.
+            </div>
+            <button
+              onclick="submitTest()"
+              class="bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-3 px-8 rounded-xl shadow-md transition-all w-full sm:w-auto"
+            >
+              Submit Test
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div id="results-view" class="hidden space-y-8">
+        <div
+          class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden"
+        >
+          <div class="bg-cyan-700 p-6 text-white text-center">
+            <h2 class="text-2xl font-bold mb-2">Test Completed!</h2>
+            <p class="text-cyan-100">
+              Here is your detailed performance breakdown.
+            </p>
+          </div>
+
+          <div class="p-6">
+            <div
+              class="flex flex-col md:flex-row gap-6 items-center justify-between mb-8"
+            >
+              <div class="text-center md:text-left">
+                <div
+                  class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-1"
+                >
+                  Total Score
+                </div>
+                <div class="text-5xl font-black text-slate-800">
+                  <span id="score-value">0.00</span>
+                  <span class="text-xl text-slate-400 font-medium"
+                    >/ <span id="score-total">0</span></span
+                  >
+                </div>
+              </div>
+
+              <div
+                class="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full md:w-auto"
+              >
+                <div
+                  class="p-4 rounded-xl flex flex-col items-center justify-center bg-blue-50 text-blue-700"
+                >
+                  <div
+                    class="flex items-center gap-1.5 mb-1 opacity-80 text-sm font-semibold"
+                  >
+                    <i data-lucide="file-text" class="w-4 h-4"></i> Attempted
+                  </div>
+                  <div id="stat-attempted" class="text-2xl font-bold">0</div>
+                </div>
+                <div
+                  class="p-4 rounded-xl flex flex-col items-center justify-center bg-cyan-50 text-cyan-700"
+                >
+                  <div
+                    class="flex items-center gap-1.5 mb-1 opacity-80 text-sm font-semibold"
+                  >
+                    <i data-lucide="check-circle" class="w-4 h-4"></i> Correct
+                  </div>
+                  <div id="stat-correct" class="text-2xl font-bold">0</div>
+                </div>
+                <div
+                  class="p-4 rounded-xl flex flex-col items-center justify-center bg-red-50 text-red-700"
+                >
+                  <div
+                    class="flex items-center gap-1.5 mb-1 opacity-80 text-sm font-semibold"
+                  >
+                    <i data-lucide="x-circle" class="w-4 h-4"></i> Incorrect
+                  </div>
+                  <div id="stat-incorrect" class="text-2xl font-bold">0</div>
+                </div>
+                <div
+                  class="p-4 rounded-xl flex flex-col items-center justify-center bg-slate-100 text-slate-600"
+                >
+                  <div
+                    class="flex items-center gap-1.5 mb-1 opacity-80 text-sm font-semibold"
+                  >
+                    <i data-lucide="minus" class="w-4 h-4"></i> Skipped
+                  </div>
+                  <div id="stat-skipped" class="text-2xl font-bold">0</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div
+            class="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-4"
+          >
+            <h3 class="text-xl font-bold text-slate-800">Review Questions</h3>
+
+            <div
+              class="flex bg-slate-200 p-1 rounded-lg overflow-x-auto"
+              id="filter-buttons"
+            >
+              <button
+                onclick="applyFilter('all')"
+                class="filter-btn active px-4 py-1.5 rounded-md text-sm font-medium capitalize transition-all bg-white text-cyan-700 shadow-sm"
+                data-filter="all"
+              >
+                All
+              </button>
+              <button
+                onclick="applyFilter('correct')"
+                class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium capitalize transition-all text-slate-600 hover:text-slate-800"
+                data-filter="correct"
+              >
+                Correct
+              </button>
+              <button
+                onclick="applyFilter('incorrect')"
+                class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium capitalize transition-all text-slate-600 hover:text-slate-800"
+                data-filter="incorrect"
+              >
+                Incorrect
+              </button>
+              <button
+                onclick="applyFilter('skipped')"
+                class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium capitalize transition-all text-slate-600 hover:text-slate-800"
+                data-filter="skipped"
+              >
+                Skipped
+              </button>
+            </div>
+          </div>
+
+          <div id="review-container" class="space-y-6"></div>
+        </div>
+
+        <div class="text-center pt-8 pb-12">
+          <button
+            onclick="retakeExam()"
+            class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold py-3 px-8 rounded-full transition-all flex items-center justify-center gap-2 mx-auto"
+          >
+            <i data-lucide="rotate-ccw" class="w-5 h-5"></i> Retake Exam
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      let EXAM_DATA = null;
+      let answers = {};
+      let timeLeft = 0;
+      let timerInterval = null;
+      let currentFilter = "all";
+
+      // Add the helper function here
+      function escapeHTML(str) {
+        if (!str) return "";
+        return String(str).replace(
+          /[&<>'"]/g,
+          (tag) =>
+            ({
+              "&": "&amp;",
+              "<": "&lt;",
+              ">": "&gt;",
+              "'": "&#39;",
+              '"': "&quot;",
+            })[tag],
+        );
+      }
+
+      // Fetch Exam Name from URL (e.g., ?test=test1)
+      const urlParams = new URLSearchParams(window.location.search);
+      const examFileName = urlParams.get("test");
+
+      document.addEventListener("DOMContentLoaded", () => {
+        lucide.createIcons();
+
+        if (!examFileName) {
+          document.getElementById("landing-title").textContent =
+            "Error: No exam specified in the link.";
+          return;
+        }
+
+        // Dynamically create a script tag to load the local JS file
+        const script = document.createElement("script");
+        script.src = `exams/${examFileName}.js`;
+
+        // When the script finishes loading, initialize the app
+        script.onload = () => {
+          if (!EXAM_DATA) {
+            document.getElementById("landing-title").textContent =
+              "Error: Exam data is empty.";
+            return;
+          }
+
+          document.title = `${EXAM_DATA.title} - Abeer's Biology Classroom`;
+          checkSavedProgress();
+        };
+
+        // If the file doesn't exist or the name is wrong
+        script.onerror = () => {
+          document.getElementById("landing-title").textContent =
+            "Error loading exam. Please check the file name in the link.";
+        };
+
+        // Inject the script into the page
+        document.body.appendChild(script);
+      });
+
+      // Autosave Setup
+      function checkSavedProgress() {
+        const savedData = localStorage.getItem(`exam_progress_${examFileName}`);
+
+        if (savedData) {
+          // Resume previous session
+          const parsed = JSON.parse(savedData);
+          answers = parsed.answers;
+          timeLeft = parsed.timeLeft;
+          EXAM_DATA.questions = parsed.shuffledQuestions;
+
+          document.getElementById("start-btn").innerHTML =
+            `<i data-lucide="play" class="w-5 h-5"></i> Resume Test`;
+        } else {
+          // Fresh session
+          timeLeft = EXAM_DATA.durationMinutes * 60;
+          shuffleExamData();
+        }
+
+        setupLandingUI();
+      }
+
+      function saveProgress() {
+        const stateToSave = {
+          answers: answers,
+          timeLeft: timeLeft,
+          shuffledQuestions: EXAM_DATA.questions,
+        };
+        localStorage.setItem(
+          `exam_progress_${examFileName}`,
+          JSON.stringify(stateToSave),
+        );
+      }
+
+      function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+      }
+
+      function shuffleExamData() {
+        shuffleArray(EXAM_DATA.questions);
+        EXAM_DATA.questions.forEach((q) => {
+          const correctOptionText = q.options[q.correctOptionIndex];
+          shuffleArray(q.options);
+          q.correctOptionIndex = q.options.indexOf(correctOptionText);
+        });
+      }
+
+      function setupLandingUI() {
+        document.getElementById("landing-title").textContent = EXAM_DATA.title;
+        document.getElementById("testing-title").textContent = EXAM_DATA.title;
+        document.getElementById("landing-q-count").textContent =
+          `${EXAM_DATA.questions.length} Questions`;
+        document.getElementById("landing-time").textContent =
+          `${EXAM_DATA.durationMinutes} Minutes`;
+        document.getElementById("total-count").textContent =
+          EXAM_DATA.questions.length;
+
+        document.getElementById("landing-stats").classList.remove("hidden");
+        document.getElementById("landing-stats").classList.add("flex");
+        document.getElementById("start-btn").classList.remove("hidden");
+      }
+
+      function startTest() {
+        document.getElementById("landing-view").classList.add("hidden");
+        document.getElementById("testing-view").classList.remove("hidden");
+        document.getElementById("timer-container").classList.remove("hidden");
+
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        renderQuestions();
+        updateTimerDisplay();
+
+        timerInterval = setInterval(() => {
+          timeLeft--;
+          updateTimerDisplay();
+          saveProgress();
+
+          if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            submitTest();
+          }
+        }, 1000);
+      }
+
+      function renderQuestions() {
+        const container = document.getElementById("questions-container");
+        container.innerHTML = "";
+
+        EXAM_DATA.questions.forEach((q, index) => {
+          const isAnswered = answers[q.id] !== undefined;
+          let optionsHtml = "";
+
+          q.options.forEach((opt, optIndex) => {
+            const isSelected = answers[q.id] === optIndex;
+            let buttonClass =
+              "border-slate-200 hover:border-cyan-300 hover:bg-slate-50 text-slate-700 cursor-pointer";
+            let circleClass = "border-slate-300";
+            let innerCircle = "";
+
+            if (isSelected) {
+              buttonClass =
+                "border-cyan-500 bg-cyan-50 text-cyan-800 font-medium";
+              circleClass = "border-cyan-500";
+              innerCircle =
+                '<div class="w-2.5 h-2.5 bg-cyan-500 rounded-full"></div>';
+            } else if (isAnswered) {
+              buttonClass =
+                "border-slate-100 bg-slate-50 text-slate-400 cursor-not-allowed";
+            }
+
+            optionsHtml += `
+              <button
+                  ${isAnswered ? "disabled" : ""}
+                  onclick="selectOption(${q.id}, ${optIndex})"
+                  class="w-full text-left p-4 rounded-lg border-2 transition-all flex items-center gap-3 ${buttonClass}"
+              >
+                  <div class="w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 ${circleClass}">
+                      ${innerCircle}
+                  </div>
+<span class="flex-1">${escapeHTML(opt)}</span>              </button>
+            `;
+          });
+
+          container.innerHTML += `
+            <div id="q-block-${q.id}" class="bg-white rounded-xl shadow-sm border p-6 transition-all ${isAnswered ? "border-slate-200 opacity-80" : "border-cyan-200"}">
+                <h3 class="text-lg font-medium text-slate-800 mb-4 flex gap-3">
+                    <span class="bg-cyan-100 text-cyan-800 font-bold w-8 h-8 flex items-center justify-center rounded-full shrink-0">
+                        ${index + 1}
+                    </span>
+                    <span class="pt-1">${escapeHTML(q.text)}</span>
+                </h3>
+                <div class="space-y-3 pl-11">
+                    ${optionsHtml}
+                </div>
+            </div>
+          `;
+        });
+
+        lucide.createIcons();
+        updateProgressUI();
+
+        setTimeout(() => {
+          renderMathInElement(document.getElementById("questions-container"), {
+            delimiters: [
+              { left: "$", right: "$", display: false },
+              { left: "$$", right: "$$", display: true },
+            ],
+            throwOnError: false,
+          });
+        }, 50);
+      }
+
+      function selectOption(questionId, optionIndex) {
+        if (answers[questionId] !== undefined) return;
+        answers[questionId] = optionIndex;
+        saveProgress();
+        renderQuestions();
+      }
+
+      function updateProgressUI() {
+        const answeredCount = Object.keys(answers).length;
+        document.getElementById("progress-count").textContent = answeredCount;
+        const percent = (answeredCount / EXAM_DATA.questions.length) * 100;
+        document.getElementById("progress-bar").style.width = percent + "%";
+      }
+
+      function updateTimerDisplay() {
+        const m = Math.floor(timeLeft / 60);
+        const s = timeLeft % 60;
+        document.getElementById("timer-display").textContent =
+          `${m.toString().padStart(2, "0")}:${s.toString().padStart(2, "0")}`;
+
+        const container = document.getElementById("timer-container");
+        if (timeLeft < 60) {
+          container.classList.remove("bg-cyan-800");
+          container.classList.add("bg-red-500", "animate-pulse");
+        }
+      }
+
+      function submitTest() {
+        clearInterval(timerInterval);
+
+        // Wipe autosave so next load is fresh
+        localStorage.removeItem(`exam_progress_${examFileName}`);
+
+        document.getElementById("testing-view").classList.add("hidden");
+        document.getElementById("timer-container").classList.add("hidden");
+        document
+          .getElementById("progress-bar")
+          .parentElement.classList.add("hidden");
+        document.getElementById("results-view").classList.remove("hidden");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+
+        let correct = 0;
+        let incorrect = 0;
+        let skipped = 0;
+
+        EXAM_DATA.questions.forEach((q) => {
+          const studentAnswer = answers[q.id];
+          if (studentAnswer === undefined) {
+            skipped++;
+          } else if (studentAnswer === q.correctOptionIndex) {
+            correct++;
+          } else {
+            incorrect++;
+          }
+        });
+
+        const score = correct * 1 - incorrect * 0.25;
+        const attempted = correct + incorrect;
+
+        document.getElementById("score-value").textContent = score.toFixed(2);
+        document.getElementById("score-total").textContent =
+          EXAM_DATA.questions.length;
+        document.getElementById("stat-attempted").textContent = attempted;
+        document.getElementById("stat-correct").textContent = correct;
+        document.getElementById("stat-incorrect").textContent = incorrect;
+        document.getElementById("stat-skipped").textContent = skipped;
+
+        renderReviews();
+      }
+
+      function retakeExam() {
+        localStorage.removeItem(`exam_progress_${examFileName}`);
+        window.location.reload();
+      }
+
+      function applyFilter(filterType) {
+        currentFilter = filterType;
+
+        document.querySelectorAll(".filter-btn").forEach((btn) => {
+          if (btn.dataset.filter === filterType) {
+            btn.className =
+              "filter-btn active px-4 py-1.5 rounded-md text-sm font-medium capitalize transition-all bg-white text-cyan-700 shadow-sm";
+          } else {
+            btn.className =
+              "filter-btn px-4 py-1.5 rounded-md text-sm font-medium capitalize transition-all text-slate-600 hover:text-slate-800";
+          }
+        });
+
+        renderReviews();
+      }
+
+      function renderReviews() {
+        const container = document.getElementById("review-container");
+        container.innerHTML = "";
+
+        const filteredQuestions = EXAM_DATA.questions.filter((q) => {
+          const studentAnswer = answers[q.id];
+          const isSkipped = studentAnswer === undefined;
+          const isCorrect = studentAnswer === q.correctOptionIndex;
+
+          if (currentFilter === "all") return true;
+          if (currentFilter === "correct") return !isSkipped && isCorrect;
+          if (currentFilter === "incorrect") return !isSkipped && !isCorrect;
+          if (currentFilter === "skipped") return isSkipped;
+          return true;
+        });
+
+        if (filteredQuestions.length === 0) {
+          container.innerHTML = `
+            <div class="text-center p-12 bg-white rounded-xl border border-slate-200 text-slate-500">
+                No questions match this filter.
+            </div>
+          `;
+          return;
+        }
+
+        filteredQuestions.forEach((q) => {
+          const studentAnswer = answers[q.id];
+          const isSkipped = studentAnswer === undefined;
+          const isCorrect = studentAnswer === q.correctOptionIndex;
+
+          let borderColor = "border-slate-300";
+          let bannerClass = "bg-slate-100 text-slate-600";
+          let bannerIcon = "minus";
+          let bannerText = "Skipped (0 marks)";
+
+          if (!isSkipped && isCorrect) {
+            borderColor = "border-cyan-300";
+            bannerClass = "bg-cyan-100 text-cyan-700";
+            bannerIcon = "check-circle";
+            bannerText = "Correct (+1 mark)";
+          } else if (!isSkipped && !isCorrect) {
+            borderColor = "border-red-300";
+            bannerClass = "bg-red-100 text-red-700";
+            bannerIcon = "x-circle";
+            bannerText = "Incorrect (-0.25 marks)";
+          }
+
+          let optionsHtml = "";
+          q.options.forEach((opt, optIndex) => {
+            const isStudentChoice = studentAnswer === optIndex;
+            const isActualCorrect = q.correctOptionIndex === optIndex;
+
+            let optionStyle = "border-slate-100 bg-white text-slate-600";
+            let iconHtml =
+              '<div class="w-1.5 h-1.5 rounded-full bg-slate-300 mt-2"></div>';
+
+            if (isActualCorrect) {
+              optionStyle =
+                "border-cyan-500 bg-cyan-50 text-cyan-800 font-medium";
+              iconHtml =
+                '<i data-lucide="check" class="text-cyan-500 shrink-0 w-4 h-4"></i>';
+            } else if (isStudentChoice && !isActualCorrect) {
+              optionStyle = "border-red-500 bg-red-50 text-red-800";
+              iconHtml =
+                '<i data-lucide="x" class="text-red-500 shrink-0 w-4 h-4"></i>';
+            }
+
+            optionsHtml += `
+              <div class="p-3 rounded-lg border flex items-start gap-3 ${optionStyle}">
+                  <div class="mt-0.5 w-5 flex justify-center">
+                      ${iconHtml}
+                  </div>
+                  <span class="flex-1">${escapeHTML(opt)}</span>
+                  ${isStudentChoice ? `<span class="text-xs font-bold uppercase tracking-wider opacity-70 mt-1">Your Answer</span>` : ""}
+              </div>
+            `;
+          });
+
+          // Explanation UI Injection
+          let explanationHtml = "";
+          if (q.explanation) {
+            explanationHtml = `
+              <div class="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg text-blue-800 text-base">
+                  <strong class="flex items-center gap-1.5 mb-2 text-blue-900">
+                    <i data-lucide="info" class="w-4 h-4"></i> Explanation:
+                  </strong>
+                  ${q.explanation}
+              </div>
+            `;
+          }
+
+          const reviewBlock = `
+            <div class="bg-white rounded-xl shadow-sm border overflow-hidden ${borderColor}">
+                <div class="px-6 py-2 flex items-center gap-2 text-sm font-bold ${bannerClass}">
+                    <i data-lucide="${bannerIcon}" class="w-4 h-4"></i> ${bannerText}
+                </div>
+                <div class="p-6">
+                    <h3 class="text-lg font-medium text-slate-800 mb-4">${escapeHTML(q.text)}</h3>
+                    <div class="space-y-2 pl-4 border-l-2 border-slate-100">
+                        ${optionsHtml}
+                    </div>
+                    ${explanationHtml}
+                </div>
+            </div>
+          `;
+          container.innerHTML += reviewBlock;
+        });
+
+        lucide.createIcons();
+        setTimeout(() => {
+          renderMathInElement(document.getElementById("review-container"), {
+            delimiters: [
+              { left: "$", right: "$", display: false },
+              { left: "$$", right: "$$", display: true },
+            ],
+            throwOnError: false,
+          });
+        }, 50);
+      }
+    </script>
+  </body>
+</html>
