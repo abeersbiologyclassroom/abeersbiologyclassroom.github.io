@@ -129,13 +129,25 @@
           </ul>
         </div>
 
-        <button
-          id="start-btn"
-          onclick="startTest()"
-          class="hidden bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-3 px-8 rounded-full shadow-md hover:shadow-lg transition-all flex items-center gap-2 mx-auto text-lg"
+        <div
+          id="landing-actions"
+          class="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
-          <i data-lucide="play" class="w-5 h-5"></i> Start Test Now
-        </button>
+          <button
+            id="start-btn"
+            onclick="startTest()"
+            class="hidden bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-3 px-8 rounded-full shadow-md hover:shadow-lg transition-all flex items-center gap-2 text-lg"
+          >
+            <i data-lucide="play" class="w-5 h-5"></i> Start Test Now
+          </button>
+          <button
+            id="landing-retake-btn"
+            onclick="retakeExam()"
+            class="hidden bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold py-3 px-8 rounded-full transition-all flex items-center gap-2 text-lg"
+          >
+            <i data-lucide="rotate-ccw" class="w-5 h-5"></i> Start Fresh
+          </button>
+        </div>
       </div>
 
       <div id="testing-view" class="hidden pb-20">
@@ -310,7 +322,6 @@
       let timerInterval = null;
       let currentFilter = "all";
 
-      // Add the helper function here
       function escapeHTML(str) {
         if (!str) return "";
         return String(str).replace(
@@ -326,7 +337,6 @@
         );
       }
 
-      // Fetch Exam Name from URL (e.g., ?test=test1)
       const urlParams = new URLSearchParams(window.location.search);
       const examFileName = urlParams.get("test");
 
@@ -339,11 +349,9 @@
           return;
         }
 
-        // Dynamically create a script tag to load the local JS file
         const script = document.createElement("script");
         script.src = `exams/${examFileName}.js`;
 
-        // When the script finishes loading, initialize the app
         script.onload = () => {
           if (!EXAM_DATA) {
             document.getElementById("landing-title").textContent =
@@ -355,36 +363,47 @@
           checkSavedProgress();
         };
 
-        // If the file doesn't exist or the name is wrong
         script.onerror = () => {
           document.getElementById("landing-title").textContent =
             "Error loading exam. Please check the file name in the link.";
         };
 
-        // Inject the script into the page
         document.body.appendChild(script);
       });
 
-      // Autosave Setup
       function checkSavedProgress() {
-        const savedData = localStorage.getItem(`exam_progress_${examFileName}`);
+        const savedResult = localStorage.getItem(`exam_result_${examFileName}`);
+        const savedProgress = localStorage.getItem(
+          `exam_progress_${examFileName}`,
+        );
 
-        if (savedData) {
-          // Resume previous session
-          const parsed = JSON.parse(savedData);
+        if (savedResult) {
+          const parsed = JSON.parse(savedResult);
+          answers = parsed.answers;
+          EXAM_DATA.questions = parsed.shuffledQuestions;
+
+          setupLandingUI();
+          submitTest(true);
+        } else if (savedProgress) {
+          const parsed = JSON.parse(savedProgress);
           answers = parsed.answers;
           timeLeft = parsed.timeLeft;
           EXAM_DATA.questions = parsed.shuffledQuestions;
 
-          document.getElementById("start-btn").innerHTML =
-            `<i data-lucide="play" class="w-5 h-5"></i> Resume Test`;
+          // Update Start button to Resume and show Retake option
+          const startBtn = document.getElementById("start-btn");
+          startBtn.innerHTML = `<i data-lucide="rotate-cw" class="w-5 h-5"></i> Resume Test`;
+          document
+            .getElementById("landing-retake-btn")
+            .classList.remove("hidden");
+
+          setupLandingUI();
         } else {
-          // Fresh session
           timeLeft = EXAM_DATA.durationMinutes * 60;
           shuffleExamData();
+          setupLandingUI();
         }
-
-        setupLandingUI();
+        lucide.createIcons();
       }
 
       function saveProgress() {
@@ -546,12 +565,22 @@
         }
       }
 
-      function submitTest() {
+      function submitTest(isSilent = false) {
         clearInterval(timerInterval);
 
-        // Wipe autosave so next load is fresh
-        localStorage.removeItem(`exam_progress_${examFileName}`);
+        if (!isSilent) {
+          const resultToSave = {
+            answers: answers,
+            shuffledQuestions: EXAM_DATA.questions,
+          };
+          localStorage.setItem(
+            `exam_result_${examFileName}`,
+            JSON.stringify(resultToSave),
+          );
+          localStorage.removeItem(`exam_progress_${examFileName}`);
+        }
 
+        document.getElementById("landing-view").classList.add("hidden");
         document.getElementById("testing-view").classList.add("hidden");
         document.getElementById("timer-container").classList.add("hidden");
         document
@@ -591,6 +620,7 @@
 
       function retakeExam() {
         localStorage.removeItem(`exam_progress_${examFileName}`);
+        localStorage.removeItem(`exam_result_${examFileName}`);
         window.location.reload();
       }
 
@@ -688,7 +718,6 @@
             `;
           });
 
-          // Explanation UI Injection
           let explanationHtml = "";
           if (q.explanation) {
             explanationHtml = `
