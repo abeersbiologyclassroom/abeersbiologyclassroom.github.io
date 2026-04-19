@@ -1,5 +1,5 @@
 EXAM_DATA = {
-  title: "কর্মমুখী রসায়ন",
+  title: "কর্মমুখী রসায়ন",
   durationMinutes: 30,
   questions: [
     {
@@ -9,10 +9,9 @@ EXAM_DATA = {
         "$\\ce{SO2}$",
         "$\\ce{N2O}$",
         "$\\ce{NO2}$",
-        "$\\ce{O2}$"
+        "$\\ce{O2}$",
       ],
-      correctOptionIndex: 3
-    },
+      correctOptionIndex: 3,},
     {
       id: 2,
       text: "কোনটি প্রাকৃতিক খাদ্য সংরক্ষক?",
@@ -20,9 +19,9 @@ EXAM_DATA = {
         "ফরমালিন",
         "সালফার ডাইঅক্সাইড",
         "সোডিয়াম নাইট্রাইট",
-        "সোডিয়াম ক্লোরাইড"
+        "সোডিয়াম ক্লোরাইড",
       ],
-      correctOptionIndex: 3
+      correctOptionIndex: 3,
     },
     {
       id: 3,
@@ -31,9 +30,9 @@ EXAM_DATA = {
         "সোডিয়াম বেঞ্জোয়েট",
         "সোডিয়াম নাইট্রাইট",
         "ক্যালসিয়াম প্রোপানোয়েট",
-        "ক্যালসিয়াম কার্বাইড"
+        "ক্যালসিয়াম কার্বাইড",
       ],
-      correctOptionIndex: 0
+      correctOptionIndex: 0,
     },
     {
       id: 4,
@@ -42,9 +41,9 @@ EXAM_DATA = {
         "$\\ce{NaCl}$",
         "$\\ce{C12H22O11}$",
         "$\\ce{HCHO}$ এর 40% দ্রবণ",
-        "$\\ce{C6H5COOH}$"
+        "$\\ce{C6H5COOH}$",
       ],
-      correctOptionIndex: 3
+      correctOptionIndex: 3,
     },
     {
       id: 5,
@@ -53,9 +52,9 @@ EXAM_DATA = {
         "সোডিয়াম বাইসালফাইট",
         "পটাসিয়াম বাইসালফাইট",
         "সোডিয়াম নাইট্রাইট",
-        "ফরমালিন"
+        "ফরমালিন",
       ],
-      correctOptionIndex: 3
+      correctOptionIndex: 3,
     },
     {
       id: 6,
@@ -64,9 +63,9 @@ EXAM_DATA = {
         "pH 4.74",
         "pH 4.50",
         "pH 3.14",
-        "pH 3.01"
+        "pH 3.01",
       ],
-      correctOptionIndex: 2
+      correctOptionIndex: 2,
     },
     {
       id: 7,
@@ -75,9 +74,9 @@ EXAM_DATA = {
         "EDTA",
         "$\\ce{C6H12O6}$",
         "$\\ce{CH3COOH}$",
-        "BHT"
+        "BHT",
       ],
-      correctOptionIndex: 3
+      correctOptionIndex: 3,
     },
     {
       id: 8,
@@ -86,9 +85,9 @@ EXAM_DATA = {
         "ভিটামিন-C",
         "$\\ce{NaCl}$",
         "সুগার",
-        "প্রোপাইল গ্যালেট"
+        "প্রোপাইল গ্যালেট",
       ],
-      correctOptionIndex: 3
+      correctOptionIndex: 3,
     },
     {
       id: 9,
@@ -97,9 +96,9 @@ EXAM_DATA = {
         "Butylated hydroxy anisole",
         "Butalated hydroxy acetate",
         "Butahydrated hydroxy anisol",
-        "Butahydrated hydroxy amine"
+        "Butahydrated hydroxy amine",
       ],
-      correctOptionIndex: 0
+      correctOptionIndex: 0,
     },
     {
       id: 10,
@@ -108,9 +107,9 @@ EXAM_DATA = {
         "BHA",
         "BTA",
         "EDTA",
-        "BAH"
+        "BAH",
       ],
-      correctOptionIndex: 0
+      correctOptionIndex: 0,
     },
     {
       id: 11,
@@ -119,9 +118,9 @@ EXAM_DATA = {
         "চিনির দ্রবণ",
         "লবণের দ্রবণ",
         "ফরমালিন",
-        "তেল"
+        "তেল",
       ],
-      correctOptionIndex: 1
+      correctOptionIndex: 1,
     },
     {
       id: 12,
@@ -130,9 +129,9 @@ EXAM_DATA = {
         "ইথানল",
         "সাইট্রিক এসিড",
         "ফরমালিন",
-        "এসকরবিক এসিড"
+        "এসকরবিক এসিড",
       ],
-      correctOptionIndex: 1
+      correctOptionIndex: 1,
     },
     {
       id: 13,
@@ -141,9 +140,9 @@ EXAM_DATA = {
         "সাইট্রিক এসিড",
         "সিস্টিন",
         "এসকরবিক এসিড",
-        "কার্বনিক এসিড"
+        "কার্বনিক এসিড",
       ],
-      correctOptionIndex: 0
+      correctOptionIndex: 0,
     },
     {
       id: 14,
@@ -152,9 +151,9 @@ EXAM_DATA = {
         "ভিনেগার",
         "পটাসিয়াম মেটাবাইসালফাইট",
         "$\\ce{SO2}$",
-        "সোডিয়াম বেনজোয়েট"
+        "সোডিয়াম বেনজোয়েট",
       ],
-      correctOptionIndex: 3
+      correctOptionIndex: 3,
     },
     {
       id: 15,
@@ -163,9 +162,9 @@ EXAM_DATA = {
         "সোডিয়াম বেনজোয়েট",
         "সোডিয়াম নাইট্রাইট",
         "সরবিক এসিড",
-        "প্রোপানোয়িক এসিড"
+        "প্রোপানোয়িক এসিড",
       ],
-      correctOptionIndex: 1
+      correctOptionIndex: 1,
     },
     {
       id: 16,
@@ -174,9 +173,9 @@ EXAM_DATA = {
         "জেল",
         "ইমালশন",
         "সাসপেনশন",
-        "সল"
+        "সল",
       ],
-      correctOptionIndex: 1
+      correctOptionIndex: 1,
     },
     {
       id: 17,
@@ -185,9 +184,9 @@ EXAM_DATA = {
         "গাভী",
         "মহিষ",
         "ছাগল",
-        "ভেড়া"
+        "ভেড়া",
       ],
-      correctOptionIndex: 1
+      correctOptionIndex: 1,
     },
     {
       id: 18,
@@ -196,9 +195,9 @@ EXAM_DATA = {
         "ক্যারোটিন",
         "লিপিড",
         "কেসিন",
-        "ল্যাকটোজ"
+        "ল্যাকটোজ",
       ],
-      correctOptionIndex: 2
+      correctOptionIndex: 2,
     },
     {
       id: 19,
@@ -207,9 +206,9 @@ EXAM_DATA = {
         "ভাত",
         "শাক-সবজি",
         "পানি",
-        "মাছ"
+        "মাছ",
       ],
-      correctOptionIndex: 3
+      correctOptionIndex: 3,
     },
     {
       id: 20,
@@ -218,9 +217,9 @@ EXAM_DATA = {
         "$\\ce{K+}$, $\\ce{Ca^{2+}}$, $\\ce{Cl-}$",
         "$\\ce{Ca^{2+}}$, $\\ce{Mg^{2+}}$, $\\ce{Fe^{3+}}$",
         "$\\ce{K+}$, $\\ce{Cu^{2+}}$, $\\ce{P^{3-}}$",
-        "$\\ce{Na+}$, $\\ce{K+}$, $\\ce{Cl-}$"
+        "$\\ce{Na+}$, $\\ce{K+}$, $\\ce{Cl-}$",
       ],
-      correctOptionIndex: 0
+      correctOptionIndex: 0,
     },
     {
       id: 21,
@@ -229,9 +228,9 @@ EXAM_DATA = {
         "মানুষ",
         "গরু",
         "মহিষ",
-        "ভেড়া"
+        "ভেড়া",
       ],
-      correctOptionIndex: 3
+      correctOptionIndex: 3,
     },
     {
       id: 22,
@@ -240,9 +239,9 @@ EXAM_DATA = {
         "গরু",
         "মহিষ",
         "ছাগল",
-        "মানুষ"
+        "মানুষ",
       ],
-      correctOptionIndex: 1
+      correctOptionIndex: 1,
     },
     {
       id: 23,
@@ -251,9 +250,9 @@ EXAM_DATA = {
         "মানুষ",
         "মহিষ",
         "গরু",
-        "ছাগল"
+        "ছাগল",
       ],
-      correctOptionIndex: 0
+      correctOptionIndex: 0,
     },
     {
       id: 24,
@@ -262,9 +261,9 @@ EXAM_DATA = {
         "সুক্রোজ",
         "সেলুলোজ",
         "মাল্টোজ",
-        "ল্যাকটোজ"
+        "ল্যাকটোজ",
       ],
-      correctOptionIndex: 3
+      correctOptionIndex: 3,
     },
     {
       id: 25,
@@ -273,9 +272,9 @@ EXAM_DATA = {
         "$\\ce{NaHCO3}$",
         "$\\ce{H2O2}$",
         "$\\ce{NaCl}$",
-        "$\\ce{NH3}$"
+        "$\\ce{NH3}$",
       ],
-      correctOptionIndex: 0
+      correctOptionIndex: 0,
     },
     {
       id: 26,
@@ -284,9 +283,9 @@ EXAM_DATA = {
         "হিমায়ন",
         "কোঁচাজাতকরণ",
         "পাস্তুরাইজিং",
-        "ভিনেগার ব্যবহার"
+        "ভিনেগার ব্যবহার",
       ],
-      correctOptionIndex: 2
+      correctOptionIndex: 2,
     },
     {
       id: 27,
@@ -295,9 +294,9 @@ EXAM_DATA = {
         "কর্দমাক্ত মাটি",
         "চিনির দ্রবণ",
         "দুধ",
-        "রক্ত"
+        "রক্ত",
       ],
-      correctOptionIndex: 3
+      correctOptionIndex: 3,
     },
     {
       id: 28,
@@ -306,9 +305,9 @@ EXAM_DATA = {
         "দ্রবণ",
         "কলয়েড",
         "কোয়াগুলেশন",
-        "সাসপেনশন"
+        "সাসপেনশন",
       ],
-      correctOptionIndex: 3
+      correctOptionIndex: 3,
     },
     {
       id: 29,
@@ -317,9 +316,9 @@ EXAM_DATA = {
         "ইমালশন",
         "কলয়েড",
         "সাসপেনশন",
-        "কোয়াগুলেশন"
+        "কোয়াগুলেশন",
       ],
-      correctOptionIndex: 1
+      correctOptionIndex: 1,
     },
     {
       id: 30,
@@ -328,9 +327,9 @@ EXAM_DATA = {
         "$\\ce{KOH}$",
         "$\\ce{NaCl}$",
         "$\\ce{Mg(NO3)2}$",
-        "$\\ce{Fe2(SO4)3}$"
+        "$\\ce{Fe2(SO4)3}$",
       ],
-      correctOptionIndex: 3
+      correctOptionIndex: 3,
     },
     {
       id: 31,
@@ -339,9 +338,9 @@ EXAM_DATA = {
         "কলয়েড",
         "সাসপেনশন",
         "কোয়াগুলেন্ট",
-        "অবক্ষেপণ"
+        "অবক্ষেপণ",
       ],
-      correctOptionIndex: 1
+      correctOptionIndex: 1,
     },
     {
       id: 32,
@@ -350,9 +349,9 @@ EXAM_DATA = {
         "আর্দ্র বিশ্লেষণ",
         "ফারমেন্টেশন",
         "কোয়াগুলেশন",
-        "অক্সিডেশন"
+        "অক্সিডেশন",
       ],
-      correctOptionIndex: 2
+      correctOptionIndex: 2,
     },
     {
       id: 33,
@@ -361,9 +360,9 @@ EXAM_DATA = {
         "পানি শোষণ করে",
         "মাখনকে চাপ দিয়ে গলিত করে",
         "মাখনে $\\ce{P2O5}$ যোগ করে",
-        "মাখনে $\\ce{CaO}$ যোগ করে"
+        "মাখনে $\\ce{CaO}$ যোগ করে",
       ],
-      correctOptionIndex: 1
+      correctOptionIndex: 1,
     },
     {
       id: 34,
@@ -372,9 +371,9 @@ EXAM_DATA = {
         "ক্যালসিয়াম কার্বোনেট",
         "বোরিক এসিড",
         "ট্যালক",
-        "ম্যাগনেসিয়াম কার্বোনেট"
+        "ম্যাগনেসিয়াম কার্বোনেট",
       ],
-      correctOptionIndex: 2
+      correctOptionIndex: 2,
     },
     {
       id: 35,
@@ -383,9 +382,9 @@ EXAM_DATA = {
         "ট্যালক",
         "$\\ce{ZnO}$",
         "$\\ce{CaCO3}$",
-        "সুগন্ধি দ্রব্য"
+        "সুগন্ধি দ্রব্য",
       ],
-      correctOptionIndex: 0
+      correctOptionIndex: 0,
     },
     {
       id: 36,
@@ -394,9 +393,9 @@ EXAM_DATA = {
         "$\\ce{3MgO.4SiO2.H2O}$",
         "$\\ce{Na2B4O7.10H2O}$",
         "$\\ce{C3H8O3}$",
-        "$\\ce{CaCO3.MgCO3}$"
+        "$\\ce{CaCO3.MgCO3}$",
       ],
-      correctOptionIndex: 0
+      correctOptionIndex: 0,
     },
     {
       id: 37,
@@ -405,9 +404,9 @@ EXAM_DATA = {
         "$\\ce{4MgO.3SiO2.H2O}$",
         "$\\ce{3MgO.4SiO2.H2O}$",
         "$\\ce{3MgO.SiO2.4H2O}$",
-        "$\\ce{4MgO.2SiO2.H2O}$"
+        "$\\ce{4MgO.2SiO2.H2O}$",
       ],
-      correctOptionIndex: 1
+      correctOptionIndex: 1,
     },
     {
       id: 38,
@@ -416,9 +415,9 @@ EXAM_DATA = {
         "জিঙ্ক অক্সাইড",
         "ট্যালক",
         "ম্যাগনেসিয়াম কার্বোনেট",
-        "বোরিক এসিড"
+        "বোরিক এসিড",
       ],
-      correctOptionIndex: 3
+      correctOptionIndex: 3,
     },
     {
       id: 39,
@@ -427,9 +426,9 @@ EXAM_DATA = {
         "সরবিটল",
         "প্যারাফিন",
         "গ্লিসারিল মনোস্টিয়ারেট",
-        "কঠিন চর্বি"
+        "কঠিন চর্বি",
       ],
-      correctOptionIndex: 2
+      correctOptionIndex: 2,
     },
     {
       id: 40,
@@ -438,9 +437,9 @@ EXAM_DATA = {
         "তরল প্যারাফিন",
         "গ্লিসারিন",
         "প্রোপাইল প্যারাবেন",
-        "মোম"
+        "মোম",
       ],
-      correctOptionIndex: 0
+      correctOptionIndex: 0,
     },
     {
       id: 41,
@@ -449,9 +448,9 @@ EXAM_DATA = {
         "মোম",
         "খনিজ তেল",
         "রঞ্জক পদার্থ",
-        "ভেসলিন"
+        "ভেসলিন",
       ],
-      correctOptionIndex: 0
+      correctOptionIndex: 0,
     },
     {
       id: 42,
@@ -460,9 +459,9 @@ EXAM_DATA = {
         "গ্লিসারল",
         "ডি-ন্যাচার্ড অ্যালকোহল",
         "প্রোপাইলিন অ্যালকোহল",
-        "ইথাইল গ্লাইকোল"
+        "ইথাইল গ্লাইকোল",
       ],
-      correctOptionIndex: 0
+      correctOptionIndex: 0,
     },
     {
       id: 43,
@@ -471,9 +470,9 @@ EXAM_DATA = {
         "অ্যামোনিয়া",
         "কস্টিক সোডা",
         "স্পিরিট",
-        "লবণ"
+        "লবণ",
       ],
-      correctOptionIndex: 1
+      correctOptionIndex: 1,
     },
     {
       id: 44,
@@ -482,9 +481,9 @@ EXAM_DATA = {
         "$\\ce{Na2CO3}$",
         "$\\ce{NaOH}$",
         "$\\ce{(NH4)2CO3}$",
-        "$\\ce{NH4OH}$"
+        "$\\ce{NH4OH}$",
       ],
-      correctOptionIndex: 1
+      correctOptionIndex: 1,
     },
     {
       id: 45,
@@ -493,9 +492,9 @@ EXAM_DATA = {
         "কস্টিক সোডা",
         "ডিটারজেন্ট",
         "অ্যামোনিয়া দ্রবণ",
-        "সোডিয়াম হাইপোক্লোরাইট"
+        "সোডিয়াম হাইপোক্লোরাইট",
       ],
-      correctOptionIndex: 2
+      correctOptionIndex: 2,
     },
     {
       id: 46,
@@ -504,9 +503,9 @@ EXAM_DATA = {
         "ভিনেগার",
         "অ্যাকোয়া অ্যামোনিয়া",
         "$\\ce{NaOH}$",
-        "Na-লরাইল সালফেট"
+        "Na-লরাইল সালফেট",
       ],
-      correctOptionIndex: 1
+      correctOptionIndex: 1,
     },
     {
       id: 47,
@@ -515,9 +514,9 @@ EXAM_DATA = {
         "ইথাইল অ্যালকোহল",
         "অ্যামোনিয়া দ্রবণ",
         "iso-বিউটাইল অ্যালকোহল",
-        "iso-প্রোপাইল অ্যালকোহল"
+        "iso-প্রোপাইল অ্যালকোহল",
       ],
-      correctOptionIndex: 1
+      correctOptionIndex: 1,
     },
     {
       id: 48,
@@ -526,9 +525,9 @@ EXAM_DATA = {
         "iso-প্রোপাইল অ্যালকোহল",
         "iso-বিউটাইল অ্যালকোহল",
         "tert-বিউটাইল অ্যালকোহল",
-        "ইথাইল অ্যালকোহল"
+        "ইথাইল অ্যালকোহল",
       ],
-      correctOptionIndex: 0
+      correctOptionIndex: 0,
     },
     {
       id: 49,
@@ -537,9 +536,9 @@ EXAM_DATA = {
         "ল্যানোলিন",
         "লসোন",
         "অলিক এসিড",
-        "ইউজেনল তেল"
+        "ইউজেনল তেল",
       ],
-      correctOptionIndex: 1
+      correctOptionIndex: 1,
     },
     {
       id: 50,
@@ -548,9 +547,9 @@ EXAM_DATA = {
         "গ্লুকোজ থেকে ইথানল",
         "সুক্রোজ থেকে গ্লুকোজ",
         "ইথানল থেকে অ্যাসিটিক এসিড",
-        "ইথানাল থেকে অ্যাসিটিক এসিড"
+        "ইথানাল থেকে অ্যাসিটিক এসিড",
       ],
-      correctOptionIndex: 0
+      correctOptionIndex: 0,
     },
     {
       id: 51,
@@ -559,9 +558,9 @@ EXAM_DATA = {
         "6–10% $\\ce{CH3COOH}$, 94–90% পানি",
         "6–10% $\\ce{C2H5OH}$, 94–90% পানি",
         "6–10% $\\ce{CH3COCH3}$, 94–90% পানি",
-        "6–10% $\\ce{CH3CHO}$, 94–90% পানি"
+        "6–10% $\\ce{CH3CHO}$, 94–90% পানি",
       ],
-      correctOptionIndex: 0
+      correctOptionIndex: 0,
     },
     {
       id: 52,
@@ -570,9 +569,9 @@ EXAM_DATA = {
         "ভিনাইল অ্যাসিটেট",
         "অ্যাসিটিক এসিড",
         "মিথানল",
-        "ভিনাইল ক্লোরাইড"
+        "ভিনাইল ক্লোরাইড",
       ],
-      correctOptionIndex: 1
+      correctOptionIndex: 1,
     },
     {
       id: 53,
@@ -581,9 +580,9 @@ EXAM_DATA = {
         "ডায়াস্টেজ",
         "ইনভার্টেজ",
         "মাল্টেজ",
-        "জাইমেজ"
+        "জাইমেজ",
       ],
-      correctOptionIndex: 3
+      correctOptionIndex: 3,
     },
     {
       id: 54,
@@ -592,9 +591,9 @@ EXAM_DATA = {
         "52%",
         "40%",
         "20%",
-        "8%"
+        "8%",
       ],
-      correctOptionIndex: 1
+      correctOptionIndex: 1,
     },
     {
       id: 55,
@@ -603,9 +602,9 @@ EXAM_DATA = {
         "লবণ",
         "অ্যালকোহল",
         "ভিনেগার",
-        "ফরমালিন"
+        "ফরমালিন",
       ],
-      correctOptionIndex: 0
+      correctOptionIndex: 0,
     },
     {
       id: 56,
@@ -614,9 +613,9 @@ EXAM_DATA = {
         "সরিষার তেল",
         "চিনির দ্রবণ",
         "অ্যাসিটিক অ্যাসিড",
-        "কোনোটিই নয়"
+        "কোনোটিই নয়",
       ],
-      correctOptionIndex: 2
+      correctOptionIndex: 2,
     },
     {
       id: 57,
@@ -625,9 +624,9 @@ EXAM_DATA = {
         "সোডিয়াম বেনজোয়েট",
         "সরিষার তেল",
         "চিনির দ্রবণ",
-        "কোনোটিই নয়"
+        "কোনোটিই নয়",
       ],
-      correctOptionIndex: 0
+      correctOptionIndex: 0,
     },
     {
       id: 58,
@@ -636,9 +635,9 @@ EXAM_DATA = {
         "pH 4.74",
         "pH 4.50",
         "pH 3.14",
-        "pH 3.01"
+        "pH 3.01",
       ],
-      correctOptionIndex: 2
+      correctOptionIndex: 2,
     },
     {
       id: 59,
@@ -647,9 +646,9 @@ EXAM_DATA = {
         "অ্যাসিটিক এসিড",
         "সাইট্রিক এসিড",
         "ইথানল",
-        "এসকরবিক এসিড"
+        "এসকরবিক এসিড",
       ],
-      correctOptionIndex: 1
+      correctOptionIndex: 1,
     },
     {
       id: 60,
@@ -658,9 +657,9 @@ EXAM_DATA = {
         "78.2",
         "80.2",
         "87.2",
-        "90.2"
+        "90.2",
       ],
-      correctOptionIndex: 2
+      correctOptionIndex: 2,
     },
     {
       id: 61,
@@ -669,9 +668,9 @@ EXAM_DATA = {
         "সুক্রোজ",
         "ল্যাকটোজ",
         "মাল্টোজ",
-        "সেলুলোজ"
+        "সেলুলোজ",
       ],
-      correctOptionIndex: 1
+      correctOptionIndex: 1,
     },
     {
       id: 62,
@@ -680,9 +679,9 @@ EXAM_DATA = {
         "সায়ট্রেট",
         "খনিজ লবণ",
         "প্রোটিন",
-        "ল্যাকটোজ"
+        "ল্যাকটোজ",
       ],
-      correctOptionIndex: 3
+      correctOptionIndex: 3,
     },
     {
       id: 63,
@@ -691,9 +690,9 @@ EXAM_DATA = {
         "72",
         "66",
         "70",
-        "102"
+        "102",
       ],
-      correctOptionIndex: 2
+      correctOptionIndex: 2,
     },
     {
       id: 64,
@@ -702,9 +701,9 @@ EXAM_DATA = {
         "আমিষ",
         "শর্করা",
         "খাদ্যতেল",
-        "খনিজ লবণ"
+        "খনিজ লবণ",
       ],
-      correctOptionIndex: 1
+      correctOptionIndex: 1,
     },
     {
       id: 65,
@@ -713,9 +712,9 @@ EXAM_DATA = {
         "Fructose",
         "Glucose",
         "Ribose",
-        "Galactose"
+        "Galactose",
       ],
-      correctOptionIndex: 1
+      correctOptionIndex: 1,
     },
     {
       id: 66,
@@ -724,9 +723,9 @@ EXAM_DATA = {
         "ট্যালক",
         "$\\ce{ZnO}$",
         "$\\ce{MgCO3}$",
-        "সুগন্ধি দ্রব্য"
+        "সুগন্ধি দ্রব্য",
       ],
-      correctOptionIndex: 0
+      correctOptionIndex: 0,
     },
     {
       id: 67,
@@ -735,9 +734,9 @@ EXAM_DATA = {
         "ইথানোইক এসিড",
         "ইথাইল ইথানোয়েট",
         "ইথাইল অ্যালকোহল",
-        "কার্বনিক এসিড"
+        "কার্বনিক এসিড",
       ],
-      correctOptionIndex: 2
+      correctOptionIndex: 2,
     },
     {
       id: 68,
@@ -746,9 +745,9 @@ EXAM_DATA = {
         "2-হাইড্রক্সি বেঞ্জো কুইনোন",
         "বেঞ্জো কুইনোন",
         "2-হাইড্রক্সি 1,4-ন্যাফথা কুইনোন",
-        "অ্যামোনিয়াম ক্লোরাইড"
+        "অ্যামোনিয়াম ক্লোরাইড",
       ],
-      correctOptionIndex: 2
+      correctOptionIndex: 2,
     },
     {
       id: 69,
@@ -757,9 +756,9 @@ EXAM_DATA = {
         "শ্বেতসার",
         "চিটাগুড়",
         "সেলুলোজ",
-        "জাইমেজ"
+        "জাইমেজ",
       ],
-      correctOptionIndex: 0
+      correctOptionIndex: 0,
     },
     {
       id: 70,
@@ -768,9 +767,9 @@ EXAM_DATA = {
         "ইথানোইক এসিডের 6–10% জলীয় দ্রবণ",
         "খাবারের প্রিজারভেটিভ হিসেবে ব্যবহার করা হয় না",
         "খাবার ও দেহের pH এর সমতা বজায় রাখে",
-        "কৃত্রিম বা রাসায়নিক ফুড প্রিজারভেটিভ"
+        "কৃত্রিম বা রাসায়নিক ফুড প্রিজারভেটিভ",
       ],
-      correctOptionIndex: 1
+      correctOptionIndex: 1,
     },
     {
       id: 71,
@@ -779,9 +778,9 @@ EXAM_DATA = {
         "$\\ce{Na2SO4}$",
         "$\\ce{NaNO3}$",
         "$\\ce{CH3COONa}$",
-        "$\\ce{C6H5COONa}$"
+        "$\\ce{C6H5COONa}$",
       ],
-      correctOptionIndex: 3
+      correctOptionIndex: 3,
     },
     {
       id: 72,
@@ -790,9 +789,9 @@ EXAM_DATA = {
         "চর্বি",
         "আমিষ",
         "শর্করা",
-        "পানি"
+        "পানি",
       ],
-      correctOptionIndex: 3
+      correctOptionIndex: 3,
     },
     {
       id: 73,
@@ -801,9 +800,9 @@ EXAM_DATA = {
         "$\\ce{Na+}$",
         "$\\ce{Mg^{2+}}$",
         "$\\ce{Ba^{2+}}$",
-        "$\\ce{Al^{3+}}$"
+        "$\\ce{Al^{3+}}$",
       ],
-      correctOptionIndex: 3
+      correctOptionIndex: 3,
     },
     {
       id: 74,
@@ -812,9 +811,9 @@ EXAM_DATA = {
         "সোডিয়াম বেনজোয়েট",
         "সাইট্রিক এসিড",
         "বিউটাইলেটেড হাইড্রোক্সি অ্যানিসল (BHA)",
-        "সোডিয়াম নাইট্রাইট"
+        "সোডিয়াম নাইট্রাইট",
       ],
-      correctOptionIndex: 2
-    }
-  ]
+      correctOptionIndex: 2,
+    },
+  ],
 };
