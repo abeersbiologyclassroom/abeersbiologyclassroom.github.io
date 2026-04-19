@@ -1,4 +1,4 @@
-const EXAM_DATA = {
+EXAM_DATA = {
   title: "কর্মমুখী রসায়ন",
   durationMinutes: 30,
   questions: [
